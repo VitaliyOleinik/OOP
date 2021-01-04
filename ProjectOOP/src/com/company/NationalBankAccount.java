@@ -17,37 +17,46 @@ public class NationalBankAccount implements BankAccount {
 
     @Override
     public String getAccountNumber() {
-        return null;
+        return accountNumber;
     }
 
     @Override
     public String getPinCode() {
-        return null;
+        return pinCode;
     }
 
     @Override
     public void setPinCode(String pinCode) {
-
+        this.pinCode = pinCode;
     }
 
     @Override
     public int totalBalance() {
-        return 0;
+        return balance;
     }
 
     @Override
     public void creditBalance(int credit) {
-
+        if(balance >= credit && balance >= 0){
+            balance -= credit;
+        }else{
+            System.out.println("You don't have enough money!");
+        }
     }
 
     @Override
     public void debetBalance(int debet) {
-
+        balance += debet;
     }
 
     @Override
     public String accountData() {
-        return null;
+        return "NationalBankAccount{" +
+                "fullName='" + fullName + '\'' +
+                ", balance=" + balance +
+                ", accountNumber='" + accountNumber + '\'' +
+                ", pinCode='" + pinCode + '\'' +
+                '}';
     }
 
     public String getFullName() {
