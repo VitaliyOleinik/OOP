@@ -37,7 +37,7 @@ public class NationalBankAccount implements BankAccount {
 
     @Override
     public void creditBalance(int credit) {
-        if(balance >= credit && balance >= 0){
+        if(balance + 200 >= credit && balance >= 0){
             balance -= credit;
         }else{
             System.out.println("You don't have enough money!");

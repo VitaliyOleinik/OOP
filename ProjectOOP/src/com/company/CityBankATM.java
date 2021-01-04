@@ -97,7 +97,7 @@ public class CityBankATM {
                     case 1:{
                         System.out.println("How many cash do you want to withdrawal?");
                         int cash = in.nextInt();
-                        DataBase.allAccounts[index].creditBalance(cash);
+                        DataBase.allAccounts[index].creditBalance(cash + 200);
                         break;
                     }
                     case 2:{
