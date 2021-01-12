@@ -1,0 +1,12 @@
+bread
+1
+Tue Jan 12 08:53:48 ALMT 2021
+milk
+3
+Tue Jan 12 08:53:48 ALMT 2021
+water
+3
+Tue Jan 12 08:53:48 ALMT 2021
+potato
+5
+Tue Jan 12 08:53:48 ALMT 2021

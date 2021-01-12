@@ -9,6 +9,7 @@ class Admin{
     ArrayList<GoodItem> goodItems = new ArrayList<>();
     public ArrayList<GoodItem> getGoodItemList(){
         try{
+            goodItems.clear();
             BufferedReader br = new BufferedReader(new FileReader("goodItems.txt"));
             String nameOfGoodItem = "";
             while((nameOfGoodItem = br.readLine()) != null){
@@ -19,7 +20,6 @@ class Admin{
             e.printStackTrace();
         }
         return goodItems;
-
     }
     public void saveGoodItems(ArrayList<GoodItem> goodItem){
         try{

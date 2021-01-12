@@ -49,6 +49,50 @@ public class Main {
                     return;
                 }
             }
+        }else if(choose == 2){
+            Client client = new Client();
+            while (true){
+                System.out.println("PRESS [1] LIST GOODS");
+                System.out.println("PRESS [2] BUY GOOD");
+                System.out.println("PRESS [3] LIST BUY HISTORY");
+                System.out.println("PRESS [0] TO EXIT");
+                // TEST!!!!!
+//                BuyHistory good1 = new BuyHistory("bread", 1);
+//                ArrayList<BuyHistory> goodItems1 = new ArrayList<>();
+//                goodItems1.add(good1);
+//                client.saveBuyHistory(goodItems1);
+                //
+                choose = in.nextInt();
+                if(choose == 1){
+                    ArrayList<GoodItem> goodItems = client.getGoodItemList();
+                    for (int i = 0; i < goodItems.size(); i++){
+                        System.out.println(goodItems.get(i).toString());
+                    }
+                    System.out.println(goodItems.size());
+                }else if(choose == 2){
+                    System.out.println("Write the name of good");
+                    String name = in.next();
+                    System.out.println("Write the price of this good");
+                    int price = in.nextInt();
+                    // create new object
+                    BuyHistory bh = new BuyHistory(name, price);
+                    // read list with new object
+                    ArrayList<BuyHistory> buyHistories = client.getBuyHistory();
+                    // adding an object to list
+                    buyHistories.add(bh);
+                    // write to txt file
+                    client.saveBuyHistory(buyHistories);
+                }else if(choose == 3){
+                    ArrayList<BuyHistory> buyHistories = client.getBuyHistory();
+                    for(int i = 0; i < buyHistories.size(); i++){
+                        System.out.println(buyHistories.get(i).toString());
+                    }
+                    System.out.println(buyHistories.size());
+                }else if(choose == 0){
+                    return;
+                }
+            }
         }
+
     }
 }

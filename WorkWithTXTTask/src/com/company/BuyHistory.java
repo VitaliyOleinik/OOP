@@ -6,7 +6,7 @@ import java.util.Date;
 public class BuyHistory {
     String goodName;
     int goodPrice;
-    Date buyTime = new Date();
+    Date buyTime;
 
     public BuyHistory(String goodName, int goodPrice){
         this.goodName = goodName;
