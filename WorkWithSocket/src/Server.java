@@ -13,11 +13,12 @@ public class Server {
             System.out.println("Client connected");
             ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
             ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
-            String message = "";
-            while((message = (String) inputStream.readObject()) != null){
-                System.out.println(message);
-                if(message.toLowerCase().contains("hello")){
-                    outputStream.writeObject("HELLO FROM SERVER!");
+            PackageData packageData = null;
+            while((packageData = (PackageData) inputStream.readObject()) != null){
+                System.out.println(packageData.toString());
+                if(packageData.getMessage().toLowerCase().contains("hello")){
+                    packageData.setMessage("HELLO FROM SERVER!");
+                    outputStream.writeObject(packageData);
                 }else{
                     outputStream.writeObject(null);
                 }
