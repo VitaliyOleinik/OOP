@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Date;
 
-public class MessageData {
+public class MessageData  implements Serializable {
     private String userName;
     private String messageText;
     private Date sentDate;
