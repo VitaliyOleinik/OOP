@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -8,6 +9,9 @@ public class Client {
         Scanner in = new Scanner(System.in);
         System.out.print("Insert your name: ");
         String name = in.next();
+        MainMenu menu = new MainMenu();
+        menu.setVisible(true);
+        menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         try{
             Socket socket = new Socket("127.0.0.1", 2000); // localhost
