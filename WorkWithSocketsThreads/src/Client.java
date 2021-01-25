@@ -5,31 +5,39 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Client {
+    public static MainFrame frame;
+    public static Socket socket;
+    public static ObjectOutputStream outStream;
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.print("Insert your name: ");
         String name = in.next();
-        MainMenu menu = new MainMenu();
-        menu.setVisible(true);
-        menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame = new MainFrame();
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
 
+    public static void sendMessage(String message){
         try{
-            Socket socket = new Socket("127.0.0.1", 2000); // localhost
-            ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
-            ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
-            while (true){
-                System.out.println("Insert message!");
-                String message = in.next();
-                PackageData packageData = new PackageData(name, message);
-                outputStream.writeObject(packageData);
-
-                //take info from server and output it to client console!
-                if((packageData = (PackageData) inputStream.readObject()) != null){
-                    System.out.println(packageData.getMessage());
-                }
-            }
-        }catch (Exception e){
+            outStream.writeObject(message);
+        }catch(Exception e){
             e.printStackTrace();
         }
     }
+
+    public static boolean connectToServer(String ip, int port){
+        boolean check = false;
+        try{
+            socket = new Socket(ip,port);
+            outStream = new ObjectOutputStream(socket.getOutputStream());
+            check = true;
+        }catch(Exception e){
+            e.printStackTrace();
+            check = false;
+        }
+        return check;
+    }
+
+
 }

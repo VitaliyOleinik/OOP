@@ -13,15 +13,10 @@ public class ClientHandler extends Thread{
         try{
             ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
             ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
-            PackageData packageData = null;
-            while((packageData = (PackageData) inputStream.readObject()) != null) {
-                System.out.println("CLIENT ID: " + this.id + ". " +packageData.toString());
-                if (packageData.getMessage().toLowerCase().contains("hello")) {
-                    packageData.setMessage("HELLO FROM SERVER!");
-                    outputStream.writeObject(packageData);
-                } else {
-                    outputStream.writeObject(null);
-                }
+            String message = null;
+            while((message = (String)inputStream.readObject()) != null){
+                System.out.println(message);
+                System.out.println("CLIENT ID: " + this.id + ". "  + message);
             }
         }catch (Exception e){
             e.printStackTrace();
