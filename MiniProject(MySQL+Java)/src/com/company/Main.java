@@ -1,5 +1,7 @@
 package com.company;
 
+import javax.swing.*;
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,8 +10,11 @@ import java.util.ArrayList;
 
 public class Main {
     static Connection connection;
+    static MainFrame frame;
     public static void main(String[] args) {
-
+        frame = new MainFrame();
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     static void connectionToDB(){
@@ -63,5 +68,9 @@ public class Main {
             e.printStackTrace();
         }
         return items;
+    }
+
+    protected static void exit(){
+        System.exit(1);
     }
 }

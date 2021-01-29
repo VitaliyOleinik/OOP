@@ -13,7 +13,7 @@ public class Server {
                 Socket socket = server.accept();
                 id++;
                 System.out.println("Client connected");
-                
+
             }
         }catch (Exception e){
             e.printStackTrace();
