@@ -41,7 +41,7 @@ public class MainMenu extends Container {
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.exit();
+                Main.exitClient();
             }
         });
         add(exit);

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class AddStudentFrame extends Container {
     protected JTextField name;
@@ -14,6 +15,7 @@ public class AddStudentFrame extends Container {
     protected JLabel ageText;
     protected JButton addStudent;
     protected JButton back;
+    public ArrayList<Students> students;
 
     public AddStudentFrame(){
         setSize(500, 500);
@@ -62,6 +64,20 @@ public class AddStudentFrame extends Container {
         addStudent = new JButton("ADD");
         addStudent.setSize(100, 30);
         addStudent.setLocation(250, 250);
+        addStudent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String name1 = name.getText();
+                    String surname1 = surname.getText();
+                    int age1 = Integer.parseInt(age.getText());
+                    Students student = new Students(name1, surname1, age1);
+                    PackageData pd = new PackageData("ADD", student);
+                }catch (Exception e1){
+                    e1.printStackTrace();
+                }
+            }
+        });
         add(addStudent);
     }
 }
